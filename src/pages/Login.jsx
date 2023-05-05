@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { FaSignInAlt } from 'react-icons/fa'
+// import { FaSignInAlt } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -59,10 +59,7 @@ const Login = () => {
         <div className='row'>
             <div className='col-md-4 offset-md-4'>
                 <section className='heading'>
-                    <h4>
-                        <FaSignInAlt /> Login
-                    </h4>
-                    <p className='text-success'>Por favor teclea tus credenciales</p>
+                    <p className='text-warning'>Login</p>
                 </section>
                 <section className="form">
                     <form onSubmit={onSubmit}>
@@ -73,7 +70,7 @@ const Login = () => {
                                 name="email"
                                 id="email"
                                 value={email}
-                                placeholder='Teclea tu email'
+                                placeholder='Email'
                                 onChange={onChange} />
                         </div>
                         <div className="input-group mb-2">
@@ -83,11 +80,11 @@ const Login = () => {
                                 name="password"
                                 id="password"
                                 value={password}
-                                placeholder='Teclea tu password'
+                                placeholder='Password'
                                 onChange={onChange} />
                         </div>
                         <div className="input-group mb-3">
-                            <button type="submit" className='btn btn-success'>Submit</button>
+                            <button type="submit" className='btn btn-block btn-warning'>Submit</button>
                         </div>
                     </form>
                 </section>
