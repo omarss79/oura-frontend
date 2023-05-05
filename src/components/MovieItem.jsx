@@ -9,7 +9,7 @@ const MovieItem = ({ movie }) => {
             <div className="card-header">{ movie.title }</div>
             <div className="card-body">
                 <h4 className="card-title">Warning card title</h4>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
             </div>
         </div>
     )

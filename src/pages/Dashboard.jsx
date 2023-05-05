@@ -22,9 +22,9 @@ const Dashboard = () => {
         }
 
         if (!user) {
-            navigate('/login')
+            navigate('/')
         } else {
-            dispatch(getMovies())
+            // dispatch(getMovies())
         }
 
         return () => {
@@ -47,15 +47,11 @@ const Dashboard = () => {
             {/* <TareaForm /> */}
 
             <section className="content">
-                {movies.length > 0 ? (
-                    <div className='bs-component'>
-                        {movies.map((movie) => (
-                            <MovieItem key={movie._id} movie={movie} />
-                        ))}
-                    </div>
-                ) : (
-                    <h4>Tu usuario no tiene ninguna movie asignada</h4>
-                )}
+              <div className='bs-component'>
+                  {movies.map((movie) => (
+                      <MovieItem key={movie._id} movie={movie} />
+                  ))}
+              </div>
             </section>
         </>
     )

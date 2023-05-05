@@ -1,5 +1,21 @@
+import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout, reset } from '../features/auth/authSlice'
 
 const NavBar = () => {
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { user } = useSelector((state) => state.auth)
+
+  const onLogout = () => {
+      dispatch(logout())
+      dispatch(reset())
+      navigate('/login')
+  }
+
   return (
     <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <div className="container">
@@ -14,7 +30,7 @@ const NavBar = () => {
                 <span className="visually-hidden">(current)</span>
             </a>
         </li>
-        <li className="nav-item dropdown">
+        {/* <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" id="themes">Themes</a>
           <div className="dropdown-menu" aria-labelledby="themes">
             <a className="dropdown-item" href="../default/">Default</a>
@@ -27,8 +43,8 @@ const NavBar = () => {
         </li>
         <li className="nav-item">
           <a className="nav-link" href="../help/">Help</a>
-        </li>
-        <li className="nav-item">
+        </li> */}
+        {/* <li className="nav-item">
           <a className="nav-link" href="https://blog.bootswatch.com/">Blog</a>
         </li>
         <li className="nav-item dropdown">
@@ -42,15 +58,34 @@ const NavBar = () => {
             <a className="dropdown-item" href="../5/journal/_variables.scss" download>_variables.scss</a>
             <a className="dropdown-item" href="../5/journal/_bootswatch.scss" download>_bootswatch.scss</a>
           </div>
-        </li>
+        </li> */}
       </ul>
-      <ul className="navbar-nav ms-md-auto">
+      {/* <ul className="navbar-nav ms-md-auto">
         <li className="nav-item">
           <a target="_blank" rel="noopener" className="nav-link" href="#"><i className="bi bi-github" /> GitHub</a>
         </li>
         <li className="nav-item">
           <a target="_blank" rel="noopener" className="nav-link" href="#"><i className="bi bi-twitter" /> Twitter</a>
         </li>
+      </ul> */}
+      
+      <ul className="navbar-nav ms-md-auto">
+        {user ? (
+            <>
+                <button className='btn' onClick={onLogout}>
+                    <FaSignOutAlt /> Logout
+                </button>
+            </>
+        ) : (
+            <>
+                <li>
+                    <Link className="nav-link" to='/login'><FaSignInAlt /> Login</Link>
+                </li>
+                <li>
+                    <Link className="nav-link" to='/register'><FaUser /> Register</Link>
+                </li>
+            </>
+        )}
       </ul>
     </div>
   </div>
