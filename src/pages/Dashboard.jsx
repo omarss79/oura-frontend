@@ -24,7 +24,7 @@ const Dashboard = () => {
         if (!user) {
             navigate('/')
         } else {
-            // dispatch(getMovies())
+            dispatch(getMovies())
         }
 
         return () => {
@@ -46,8 +46,8 @@ const Dashboard = () => {
 
             {/* <TareaForm /> */}
 
-            <section className="content">
-              <div className='bs-component'>
+            <section className='content'>
+              <div className='row'>
                   {movies.map((movie) => (
                       <MovieItem key={movie._id} movie={movie} />
                   ))}
