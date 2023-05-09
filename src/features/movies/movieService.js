@@ -5,18 +5,17 @@ const API_URL = 'https://oura-backend-production.up.railway.app/api/movies/'
 
 //obtener las movies del usuario logeado
 const getMovies = async () => {
-    // const config = {
-    //     headers: {
-    //         Authorization: `Bearer ${token}`
-    //     }
-    // }
     const response = await axios.get(API_URL)
+    return response.data
+}
+const updateLikesMovies = async (id) => {
+    const response = await axios.put(API_URL + id)
     return response.data
 }
 
 const movieService = {
-    getMovies
-    // createTarea,
+    getMovies,
+    updateLikesMovies
     // borrarTareas
 }
 
