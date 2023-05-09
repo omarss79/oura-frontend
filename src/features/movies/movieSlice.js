@@ -12,9 +12,9 @@ const initialState = {
 //mostrar las movies del usuario
 export const getMovies = createAsyncThunk('movies/getAll', async (_, thunkAPI) => {
     try {
-        const token = thunkAPI.getState().auth.user.token
-        console.log(token);
-        return await movieService.getMovies(token)
+        // const token = thunkAPI.getState().auth.user.token
+        // console.log("Token: " + token);
+        return await movieService.getMovies()
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)

@@ -21,11 +21,13 @@ const Dashboard = () => {
             toast.error(message)
         }
 
-        if (!user) {
-            navigate('/')
-        } else {
-            dispatch(getMovies())
-        }
+        // if (!user) {
+        //     navigate('/')
+        // } else {
+        //     dispatch(getMovies())
+        // }
+
+        dispatch(getMovies())
 
         return () => {
             dispatch(reset())
@@ -39,10 +41,10 @@ const Dashboard = () => {
 
     return (
         <>
-            <section className="heading">
+            {/* <section className="heading">
                 <h4>Bienvenido {user && user.name}</h4>
                 <p>Dashboard</p>
-            </section>
+            </section> */}
 
             {/* <TareaForm /> */}
 

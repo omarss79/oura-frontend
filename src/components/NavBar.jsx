@@ -19,14 +19,14 @@ const NavBar = () => {
   return (
     <div className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
   <div className="container">
-    <a href="/" className="navbar-brand">Oura Movies</a>
+    <a href="/" className="navbar-brand">Oura <span className='text-warning'>Movies</span></a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon" />
     </button>
     <div className="collapse navbar-collapse" id="navbarResponsive">
       <ul className="navbar-nav">
         <li className="nav-item">
-            <a className="nav-link active" href="/">Home
+            <a className="nav-link active" href="/">Inicio
                 <span className="visually-hidden">(current)</span>
             </a>
         </li>
@@ -72,18 +72,23 @@ const NavBar = () => {
       <ul className="navbar-nav ms-md-auto">
         {user ? (
             <>
+              <ul>
+                <li> 
+                    <Link className="nav-link">Bienvenido {user && user.name}</Link>
+                </li>
+              </ul>
                 <button className='btn' onClick={onLogout}>
                     <FaSignOutAlt /> Logout
                 </button>
             </>
         ) : (
             <>
-                <li>
-                    <Link className="nav-link" to='/login'><FaSignInAlt /> Login</Link>
-                </li>
-                <li>
-                    <Link className="nav-link" to='/register'><FaUser /> Register</Link>
-                </li>
+              <li>
+                  <Link className="nav-link" to='/login'><FaSignInAlt /> Login</Link>
+              </li>
+              <li>
+                  <Link className="nav-link" to='/register'><FaUser /> Register</Link>
+              </li>
             </>
         )}
       </ul>
