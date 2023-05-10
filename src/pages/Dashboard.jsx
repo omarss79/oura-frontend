@@ -21,12 +21,6 @@ const Dashboard = () => {
             toast.error(message)
         }
 
-        // if (!user) {
-        //     navigate('/')
-        // } else {
-        //     dispatch(getMovies())
-        // }
-
         dispatch(getMovies())
 
         return () => {
@@ -41,13 +35,6 @@ const Dashboard = () => {
 
     return (
         <>
-            {/* <section className="heading">
-                <h4>Bienvenido {user && user.name}</h4>
-                <p>Dashboard</p>
-            </section> */}
-
-            {/* <TareaForm /> */}
-
             <section className='content'>
               <div className='row'>
                   {movies.map((movie) => (

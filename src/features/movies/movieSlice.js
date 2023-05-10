@@ -58,7 +58,11 @@ export const movieSlice = createSlice({
             .addCase(voteMovie.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
-                state.movies = action.payload
+                state.movies.forEach(element => {
+                    if(element._id === action.payload._id){
+                        element.vote_count = action.payload.vote_count
+                    }
+                })
             })
             .addCase(voteMovie.rejected, (state, action) => {
                 state.isLoading = false

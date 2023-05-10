@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import voteMovie from '../features/movies/movieSlice'
+import { voteMovie } from '../features/movies/movieSlice'
 
 const MovieItem = ({ movie }) => {
     const URL_IMAGE = 'https://image.tmdb.org/t/p/w500'
