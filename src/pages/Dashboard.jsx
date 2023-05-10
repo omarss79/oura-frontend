@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 // import TareaForm from '../components/TareaForm'
 import Spinner from '../components/Spinner'
-import { getMovies, reset } from '../features/movies/movieSlice'
+import { getMovies, reset } from '../features/movies/moviesSlice'
 import MovieItem from '../components/MovieItem'
 import { toast } from 'react-toastify'
 
@@ -13,7 +13,7 @@ const Dashboard = () => {
     const dispatch = useDispatch()
 
     const { user } = useSelector((state) => state.auth)
-    const { movies, isLoading, isError, message } = useSelector((state) => state.movie)
+    const { movies, isLoading, isError, message } = useSelector((state) => state.movies)
 
     useEffect(() => {
 

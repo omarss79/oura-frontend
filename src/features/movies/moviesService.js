@@ -8,15 +8,16 @@ const getMovies = async () => {
     const response = await axios.get(API_URL)
     return response.data
 }
+
 const updateLikesMovies = async (id) => {
     const response = await axios.put(API_URL + id)
     return response.data
 }
 
-const movieService = {
+const moviesService = {
     getMovies,
     updateLikesMovies
     // borrarTareas
 }
 
-export default movieService
+export default moviesService

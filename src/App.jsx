@@ -5,6 +5,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import Dashboard from './pages/Dashboard'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Movie from './pages/Movie'
+import NotFound from './pages/NotFound'
 import NavBar from "./components/NavBar"
 import Footer from "./components/Footer"
 
@@ -19,6 +21,8 @@ function App() {
             <Route path='/' element={<Dashboard />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/movie/:movieId' element={<Movie />} />
+            <Route path="*" element={<NotFound />}></Route>
           </Routes>
           <Footer />
         </div>

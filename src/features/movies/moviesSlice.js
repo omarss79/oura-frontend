@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import movieService from './movieService'
+import moviesService from './moviesService'
 
 const initialState = {
     movies: [],
@@ -14,7 +14,7 @@ export const getMovies = createAsyncThunk('movies/getAll', async (_, thunkAPI) =
     try {
         // const token = thunkAPI.getState().auth.user.token
         // console.log("Token: " + token);
-        return await movieService.getMovies()
+        return await moviesService.getMovies()
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
@@ -24,15 +24,15 @@ export const getMovies = createAsyncThunk('movies/getAll', async (_, thunkAPI) =
 //votar una pelicula
 export const voteMovie = createAsyncThunk('movies/vote', async (id, thunkAPI) => {
     try {
-        return await movieService.updateLikesMovies(id)
+        return await moviesService.updateLikesMovies(id)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
     }
 })
 
-export const movieSlice = createSlice({
-    name: 'movie',
+export const moviesSlice = createSlice({
+    name: 'movies',
     initialState,
     reducers: {
         reset: (state) => initialState
@@ -58,6 +58,7 @@ export const movieSlice = createSlice({
             .addCase(voteMovie.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
+                // state.movies[0].vote_count = action.payload.vote_count
                 state.movies.forEach(element => {
                     if(element._id === action.payload._id){
                         element.vote_count = action.payload.vote_count
@@ -72,5 +73,5 @@ export const movieSlice = createSlice({
     }
 })
 
-export const { reset } = movieSlice.actions
-export default movieSlice.reducer
+export const { reset } = moviesSlice.actions
+export default moviesSlice.reducer

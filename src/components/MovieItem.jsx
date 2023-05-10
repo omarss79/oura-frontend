@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
-import { voteMovie } from '../features/movies/movieSlice'
+import { Link, useNavigate } from 'react-router-dom'
+import { voteMovie } from '../features/movies/moviesSlice'
 
 const MovieItem = ({ movie }) => {
     const URL_IMAGE = 'https://image.tmdb.org/t/p/w500'
@@ -17,16 +18,10 @@ const MovieItem = ({ movie }) => {
                 <div className="card-body">
                     <p className="card-text">{ resume.substr(1,100) + "..." }</p>
                 </div>
-                {/* <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Cras justo odio</li>
-                    <li className="list-group-item">Dapibus ac facilisis in</li>
-                    <li className="list-group-item">Vestibulum at eros</li>
-                </ul> */}
                 <div className="card-body">
                     <div className="row">
                         <div className="col-md-6">Votos: <span className='text-warning'>{ movie.vote_count }</span></div>
                         <div className="col-md-6">
-                            {/* <a href="#" className="card-link">Votar</a> */}
                             <button className='btn' onClick={() => dispatch(voteMovie(movie.id))}>
                                 Votar
                             </button>
@@ -34,7 +29,7 @@ const MovieItem = ({ movie }) => {
                     </div>
                 </div>
                 <div className="card-footer text-muted">
-                    <a href="#" className="card-link">Ver pelicula</a>
+                    <Link className="nav-link" to={ '/movie/' + movie.id }>Ver pelicula</Link>
                 </div>
             </div>
         </div>
